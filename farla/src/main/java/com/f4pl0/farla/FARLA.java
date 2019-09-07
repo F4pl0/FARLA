@@ -31,6 +31,7 @@ public class FARLA {
         catch (MalformedURLException e){
             onResult.resultFailure(MALFORMED_URL);
         }catch (IOException e){
+            e.printStackTrace();
             onResult.resultFailure(NETWORK_ERROR);
         }
     }
