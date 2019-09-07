@@ -9,7 +9,7 @@
 * Performance
 > *Only bottleneck is your connection and server location*
 * Simple
-> *It just couldn't be simpler*
+> *Implements in seconds, period*
 ## Installation
 
 Add Jitpack.io repository to your build.gradle file:
