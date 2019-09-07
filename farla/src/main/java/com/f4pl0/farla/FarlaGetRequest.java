@@ -29,17 +29,17 @@ public class FarlaGetRequest {
         void onFailure(int error);
     }
 
-    FarlaGetRequest setURL(String URL){
+    public FarlaGetRequest setURL(String URL){
         this.URL = URL;
         return this;
     }
 
-    FarlaGetRequest setListener(onGetRequestListener listener){
+    public FarlaGetRequest setListener(onGetRequestListener listener){
         this.listener = listener;
         return this;
     }
 
-    void execute(){
+    public void execute(){
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL,
                 new Response.Listener<String>() {
                     @Override
