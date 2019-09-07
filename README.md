@@ -26,7 +26,7 @@ Add FARLA to your dependencies
 
 ```javascript
 dependencies {
-        implementation 'com.github.F4pl0:FARLA:0.4.0'
+        implementation 'com.github.F4pl0:FARLA:0.4.1'
   }
 ```
 
