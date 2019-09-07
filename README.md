@@ -8,7 +8,8 @@
 > *Supports Java and Kotlin*
 * Performance
 > *Only bottleneck is your connection and server location*
-
+* Simple
+> *It just couldn't be simpler*
 ## Installation
 
 Add Jitpack.io repository to your build.gradle file:
