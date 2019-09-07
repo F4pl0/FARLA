@@ -3,11 +3,11 @@
 
 ## Features
 * Lightweight
-*So it can fit in every project you want*
+> *So it can fit in every project you want*
 * Native
-*Supports Java, and Kotlin*
+> *Supports Java and Kotlin*
 * Performance
-*Only bottleneck is your connection and server location*
+> *Only bottleneck is your connection and server location*
 
 ## Installation
 
