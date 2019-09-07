@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FARLA farla = new FARLA();
-        farla.GET("http://google.com", "asd", new FARLA.onResult() {
+        farla.GET("http://webhook.site/7a7ca4d3-e601-4950-83bf-47e7bb769dd0", "asd", new FARLA.onResult() {
             @Override
             public void resultSuccess(String response) {
                 Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
