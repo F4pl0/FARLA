@@ -1,0 +1,2 @@
+include ':app', ':farla'
+rootProject.name='FARLAExample'
