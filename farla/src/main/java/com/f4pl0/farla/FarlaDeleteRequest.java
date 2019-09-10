@@ -15,13 +15,20 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class FarlaDeleteRequest {
 
+    //region Vars
     Context context;
     RequestQueue requestQueue;
     String URL = "";
     onDeleteRequestListener listener;
+    HashMap<String, String> headers = new HashMap<String, String>();
+    //endregion
 
+    //region Constructors and Interfaces
     public FarlaDeleteRequest(Context context) {
         this.context = context;
         requestQueue = Volley.newRequestQueue(context);
@@ -31,7 +38,9 @@ public class FarlaDeleteRequest {
         void onSuccess(String response);
         void onFailure(int error);
     }
+    //endregion
 
+    //region General
     public FarlaDeleteRequest setURL(String URL){
         this.URL = URL;
         return this;
@@ -41,6 +50,19 @@ public class FarlaDeleteRequest {
         this.listener = listener;
         return this;
     }
+    //endregion
+
+    //region Headers
+    public FarlaDeleteRequest addHeader(String key, String value){
+        headers.put(key, value);
+        return this;
+    }
+
+    public FarlaDeleteRequest removeHeader(String key){
+        headers.remove(key);
+        return this;
+    }
+    //endregion
 
     public void execute(){
         StringRequest deleteRequest = new StringRequest(Request.Method.DELETE, URL,
@@ -68,7 +90,12 @@ public class FarlaDeleteRequest {
                         }
                     }
                 }
-        );
+        ) {
+            @Override
+            public Map<String, String> getHeaders() {
+                return headers;
+            }
+        };
         requestQueue.add(deleteRequest);
     }
 }

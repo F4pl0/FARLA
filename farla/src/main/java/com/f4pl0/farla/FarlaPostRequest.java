@@ -20,12 +20,16 @@ import java.util.Map;
 
 public class FarlaPostRequest {
 
+    //region Vars
     Context context;
     RequestQueue requestQueue;
     String URL = "";
     onPostRequestListener listener;
     Map<String, String>  params = new HashMap<String, String>();
+    HashMap<String, String> headers = new HashMap<String, String>();
+    //endregion
 
+    //region Constructors and Interfaces
     public FarlaPostRequest(Context context) {
         this.context = context;
         requestQueue = Volley.newRequestQueue(context);
@@ -35,17 +39,9 @@ public class FarlaPostRequest {
         void onSuccess(String response);
         void onFailure(int error);
     }
+    //endregion
 
-    public FarlaPostRequest addParam(String key, String value){
-        params.put(key, value);
-        return this;
-    }
-
-    public FarlaPostRequest removeParam(String key){
-        params.remove(key);
-        return this;
-    }
-
+    //region General
     public FarlaPostRequest setURL(String URL){
         this.URL = URL;
         return this;
@@ -55,6 +51,31 @@ public class FarlaPostRequest {
         this.listener = listener;
         return this;
     }
+    //endregion
+
+    //region Params
+    public FarlaPostRequest addParam(String key, String value){
+        params.put(key, value);
+        return this;
+    }
+
+    public FarlaPostRequest removeParam(String key){
+        params.remove(key);
+        return this;
+    }
+    //endregion
+
+    //region Headers
+    public FarlaPostRequest addHeader(String key, String value){
+        headers.put(key, value);
+        return this;
+    }
+
+    public FarlaPostRequest removeHeader(String key){
+        headers.remove(key);
+        return this;
+    }
+    //endregion
 
     public void execute(){
         StringRequest postRequest = new StringRequest(Request.Method.POST, URL,
@@ -87,6 +108,11 @@ public class FarlaPostRequest {
             protected Map<String, String> getParams()
             {
                 return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() {
+                return headers;
             }
         };
         requestQueue.add(postRequest);

@@ -19,12 +19,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FarlaPutRequest {
+
+    //region Vars
     Context context;
     RequestQueue requestQueue;
     String URL = "";
     onPutRequestListener listener;
     Map<String, String> params = new HashMap<String, String>();
+    HashMap<String, String> headers = new HashMap<String, String>();
+    //endregion
 
+    //region Constructiors and interfaces
     public FarlaPutRequest(Context context) {
         this.context = context;
         requestQueue = Volley.newRequestQueue(context);
@@ -34,17 +39,9 @@ public class FarlaPutRequest {
         void onSuccess(String response);
         void onFailure(int error);
     }
+    //endregion
 
-    public FarlaPutRequest addParam(String key, String value){
-        params.put(key, value);
-        return this;
-    }
-
-    public FarlaPutRequest removeParam(String key){
-        params.remove(key);
-        return this;
-    }
-
+    //region General
     public FarlaPutRequest setURL(String URL){
         this.URL = URL;
         return this;
@@ -54,6 +51,31 @@ public class FarlaPutRequest {
         this.listener = listener;
         return this;
     }
+    //endregion
+
+    //region Params
+    public FarlaPutRequest addParam(String key, String value){
+        params.put(key, value);
+        return this;
+    }
+
+    public FarlaPutRequest removeParam(String key){
+        params.remove(key);
+        return this;
+    }
+    //endregion
+
+    //region Headers
+    public FarlaPutRequest addHeader(String key, String value){
+        headers.put(key, value);
+        return this;
+    }
+
+    public FarlaPutRequest removeHeader(String key){
+        headers.remove(key);
+        return this;
+    }
+    //endregion
 
     public void execute(){
         StringRequest putRequest = new StringRequest(Request.Method.PUT, URL,
@@ -89,6 +111,10 @@ public class FarlaPutRequest {
                 return params;
             }
 
+            @Override
+            public Map<String, String> getHeaders() {
+                return headers;
+            }
         };
         requestQueue.add(putRequest);
     }

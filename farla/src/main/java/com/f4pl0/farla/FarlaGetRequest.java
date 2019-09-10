@@ -16,15 +16,20 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FarlaGetRequest {
 
+    //region Vars
     Context context;
     RequestQueue requestQueue;
     String URL = "";
     onGetRequestListener listener;
+    HashMap<String, String> headers = new HashMap<String, String>();
+    //endregion
 
+    //region Constructors and Interfaces
     public FarlaGetRequest(Context context) {
         this.context = context;
         requestQueue = Volley.newRequestQueue(context);
@@ -34,7 +39,9 @@ public class FarlaGetRequest {
         void onSuccess(String response);
         void onFailure(int error);
     }
+    //endregion
 
+    //region General
     public FarlaGetRequest setURL(String URL){
         this.URL = URL;
         return this;
@@ -44,6 +51,19 @@ public class FarlaGetRequest {
         this.listener = listener;
         return this;
     }
+    //endregion
+
+    //region Headers
+    public FarlaGetRequest addHeader(String key, String value){
+        headers.put(key, value);
+        return this;
+    }
+
+    public FarlaGetRequest removeHeader(String key){
+        headers.remove(key);
+        return this;
+    }
+    //endregion
 
     public void execute(){
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL,
@@ -68,7 +88,12 @@ public class FarlaGetRequest {
                             listener.onFailure(Constants.PARSE_ERROR);
                         }
                     }
-                });
+                }){
+            @Override
+            public Map<String, String> getHeaders() {
+                return headers;
+            }
+        };
         requestQueue.add(stringRequest);
     }
 
