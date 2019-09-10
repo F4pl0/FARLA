@@ -3,7 +3,7 @@
 
 ## Features
 * Lightweight
-> *So it can fit in every project you want*
+> *So it can fit in every project you want, compressed to <50KB*
 * Native
 > *Supports Java and Kotlin*
 * Performance
@@ -26,7 +26,7 @@ Add FARLA to your dependencies
 
 ```javascript
 dependencies {
-        implementation 'com.github.F4pl0:FARLA:0.4.0'
+        implementation 'com.github.F4pl0:FARLA:0.4.1'
   }
 ```
 
