@@ -1,3 +1,4 @@
+[![API](https://img.shields.io/badge/API-19%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=19)
 [![](https://jitpack.io/v/F4pl0/FARLA.svg)](https://jitpack.io/#F4pl0/FARLA)
 # FARLA - F4pl0's Awesome Request Library for Android
 
