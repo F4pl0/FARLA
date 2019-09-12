@@ -116,3 +116,27 @@ new FarlaPostRequest(this)             // Example
                 .addHeader("Content-Type", "multipart/form-data")
                 .execute();
 ```
+
+## NOTE
+**From Android 9.0+ Google disallows HTTP traffic, only allows secure HTTPS**  
+**You will get NO_CONNECTION error on HTTP requests**  
+To allow HTTP Traffic to some servers, you must put them in a *network_security_config.xml* file:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">f4pl0.github.io</domain>
+    </domain-config>
+</network-security-config>
+```
+And then include it in the Android Manifest:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest ... >
+    <application android:networkSecurityConfig="@xml/network_security_config"
+                    ... >
+        ...
+    </application>
+</manifest>
+```
+And you should be allowed to make HTTP requests to the server listed.
