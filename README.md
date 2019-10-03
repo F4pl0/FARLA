@@ -33,6 +33,18 @@ dependencies {
         implementation 'com.github.F4pl0:FARLA:0.5.0'
   }
 ```
+Add `USES-INTERNET` permission to your Android Manifest:
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	  ...
+	  >
+	
+    	<uses-permission android:name="android.permission.INTERNET" />
+	
+	...
+	
+</manifest>
+```
 
 ## Usage
 
